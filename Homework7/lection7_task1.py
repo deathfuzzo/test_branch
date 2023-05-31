@@ -14,22 +14,22 @@ from math import sqrt
 
 class Segment:
 
-    def __init__(self, point1, point2):
+    def __init__(self, point1, point2):  # инициализируем объекты класса Segment по координатам (x,y) точки point1 и point2
         self.point1 = point1
         self.point2 = point2
 
     def length(self):
         return (
-            round(sqrt((self.point1[0] - self.point2[0]) ** 2 + (self.point1[1] - self.point2[1]) ** 2), 2)
+            round(sqrt((self.point1[0] - self.point2[0]) ** 2 + (self.point1[1] - self.point2[1]) ** 2), 2)  # функция высчитывает длину отрезка между с точками point1 и point2 на плоскости по формуле  √(x1-x2)²+(y1-y2)²
         )
 
-    def x_axis_intersection(self):
+    def x_axis_intersection(self):  #  функция проверяет пересечение отрезка с осью 0х через сравнение y1*y2 < 0 - пересекает, иначе - не пересекает
         if self.point1[1] * self.point2[1] < 0:
             return True
         else:
             return False
 
-    def y_axis_intersection(self):
+    def y_axis_intersection(self): # функция проверяет пересечение отрезка с осью 0х через сравнение x1*x2 < 0 - пересекает, иначе - не пересекает
         if self.point1[0] * self.point2[0] < 0:
             return True
         else:

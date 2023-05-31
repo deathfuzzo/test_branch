@@ -23,7 +23,7 @@
 
 class PersonInfo:
 
-    def __init__(self, name, age, department1, department2="", department3="", department4=""):
+    def __init__(self, name, age, department1, department2="", department3="", department4=""): # инициализация объектов класса PersonInfo по имени, возрасту, узлам подразделений
         self.name = name
         self.age = age
         self.department1 = department1
@@ -57,7 +57,7 @@ class PersonInfo:
         dict_frequency = ([(lst.count(i), i) for i in lst])  # создаем словарь вхождений символов из срощенного списка
         top3 = (sorted(set(dict_frequency))[::-1][:3])  # сортируем словарь по топ3 максимального количества вхождений
         sum_top3 = top3[0][0] + top3[1][0] + top3[2][0]  # суммируем ключи (макс кол-во вхождений) из словаря топ3
-        return 1337 * self.age * sum_top3
+        return 1337 * self.age * sum_top3  #  функция возвращает вычисление по формуле: 1337*Возраст*суммарное кол-во вхождений трех наиболее часто встречающихся букв
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
