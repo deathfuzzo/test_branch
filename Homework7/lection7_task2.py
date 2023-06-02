@@ -23,37 +23,28 @@
 
 class PersonInfo:
 
-    def __init__(self, name, age, department1, department2="", department3="", department4=""): # инициализация объектов класса PersonInfo по имени, возрасту, узлам подразделений
+    def __init__(self, name, age, *args): # инициализация объектов класса PersonInfo по имени, возрасту, узлам подразделений
         self.name = name
         self.age = age
-        self.department1 = department1
-        self.department2 = department2
-        self.department3 = department3
-        self.department4 = department4
+        self.args = args
 
     def short_name(self):  # функция форматирования фамилии/имени
         return (
                 self.name.split(' ')[1] + " " + self.name[0].split(' ')[0] + "."  #  сплитом режем фамилию/имя на 2 части, переворачиваем, у имени берём первый символ имени + точка
         )
 
-    def path_deps(self):  # функция создания путей подразделений
-        if self.department4 != "":  # через проверку с конца наличия подразделений сращиваем в путь подразделения
-            return (
-                    self.department1 + " --> " + self.department2 + " --> " + self.department3 + " --> " + self.department4
-            )
-        elif self.department4 == "" and self.department3 != "":
-            return (
-                    self.department1 + " --> " + self.department2 + " --> " + self.department3
-            )
-        elif self.department3 == "" and self.department2 != "":
-            return (
-                    self.department1 + " --> " + self.department2
-            )
-        else:
-            return self.department1
+    def path_deps(self):
+        path = ''
+        for i in range(len(self.args)):
+            path += self.args[i] + " --> "
+        path = path[:(len(path) - 5):]
+        print(path)
+        return path
 
     def new_salary(self):  # функция вычисления новой зарплаты
-        lst = self.department1 + self.department2 + self.department3 + self.department4  # сращиваем подразделения в список
+        lst = ""
+        for i in range(len(self.args)):
+            lst += self.args[i]
         dict_frequency = ([(lst.count(i), i) for i in lst])  # создаем словарь вхождений символов из срощенного списка
         top3 = (sorted(set(dict_frequency))[::-1][:3])  # сортируем словарь по топ3 максимального количества вхождений
         sum_top3 = top3[0][0] + top3[1][0] + top3[2][0]  # суммируем ключи (макс кол-во вхождений) из словаря топ3
