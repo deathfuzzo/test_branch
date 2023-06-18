@@ -30,8 +30,8 @@ def test1():
         password_field = browser.find_element(By.CSS_SELECTOR, "[name='Password']")
         password_field.send_keys(password, Keys.ENTER)
         assert password_field.get_attribute('value') == password
-        time.sleep(5)
-        contacts_accord = browser.find_element(By.CSS_SELECTOR, "[data-qa='NavigationPanels-Accordion__title']")
+        time.sleep(6)
+        contacts_accord = browser.find_element(By.CSS_SELECTOR, "[data-qa='Контакты']")
         contacts_accord.click()
         time.sleep(3)
         contacts_menu = browser.find_element(By.CSS_SELECTOR, ".NavigationPanels-SubMenu__headTitle")
